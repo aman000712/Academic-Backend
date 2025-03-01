@@ -15,7 +15,10 @@ export class OurpartnersService {
 
   async create(createOurpartnerDto: CreateOurpartnerDto) {
 
-    const ourpartner = this.ourpartnerRepository.create(createOurpartnerDto);
+    const existingOurpartner = await this.ourpartnerRepository.findOne({});
+    if (existingOurpartner) {
+      throw new Error('Only one Ourpartner record is allowed. Use update instead.');
+    }
     if (createOurpartnerDto.logoimage) {
       const logoimage = await this.ourpartnerRepository.manager.findOne(
         Fileupload, {
@@ -30,6 +33,7 @@ export class OurpartnersService {
     }
 
 
+    const ourpartner = this.ourpartnerRepository.create(createOurpartnerDto);
     return this.ourpartnerRepository.save(ourpartner);
   }
 
@@ -54,6 +58,7 @@ export class OurpartnersService {
     if (!ourpartner) {
       throw new Error('ourpartner not found');
     }
+
 
     Object.assign(ourpartner, updateOurpartnerDto);
 

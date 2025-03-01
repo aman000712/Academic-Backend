@@ -14,10 +14,10 @@ async function bootstrap() {
   });
 
   const config = new DocumentBuilder()
-    .setTitle('Cats example')
-    .setDescription('The cats API description')
+    .setTitle('Abhyam Academy')
+    .setDescription('This is Abhyam Academy API')
     .setVersion('1.0')
-    .addTag('cats')
+    // .addTag('cats')s
     .build();
   const documentFactory = () => SwaggerModule.createDocument(app, config);
   SwaggerModule.setup('api', app, documentFactory);
