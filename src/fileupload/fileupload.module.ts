@@ -4,6 +4,7 @@ import { FileuploadController } from './fileupload.controller';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { Fileupload } from './entities/fileupload.entity';
 import { NestjsFormDataModule } from 'nestjs-form-data';
+import { ConfigModule } from '@nestjs/config';
 
 @Module({
 
@@ -15,6 +16,7 @@ import { NestjsFormDataModule } from 'nestjs-form-data';
 
     ]),
     NestjsFormDataModule,
+    ConfigModule.forRoot(),
 
 
   ],
