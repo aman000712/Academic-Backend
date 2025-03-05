@@ -18,7 +18,7 @@ export class Whychooseus {
 
     @OneToOne(()=>Fileupload)
     @JoinColumn()
-    image:Fileupload
+    imageid:Fileupload
 
 
 

@@ -10,7 +10,7 @@ export class Popularcourse {
 
     @OneToOne(() => Fileupload)
     @JoinColumn()
-    image: Fileupload
+    imageid: Fileupload
 
     @Column()
     course:string

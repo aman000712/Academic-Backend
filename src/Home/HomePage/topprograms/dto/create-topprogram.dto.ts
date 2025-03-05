@@ -4,7 +4,7 @@ export class CreateTopprogramDto {
 
 
     @ApiProperty()
-    image: any;
+    imageid: any;
 
 
     @ApiProperty()

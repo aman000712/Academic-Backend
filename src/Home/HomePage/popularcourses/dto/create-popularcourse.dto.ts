@@ -4,7 +4,7 @@ export class CreatePopularcourseDto {
 
 
     @ApiProperty()
-    image: any;
+    imageid: any;
 
 
     @ApiProperty()

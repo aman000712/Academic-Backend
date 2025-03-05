@@ -9,12 +9,21 @@ export class Takeactionnow {
     @PrimaryGeneratedColumn()
     id: number
 
+    @OneToOne(() => Fileupload)
+    @JoinColumn()
+    imageid: Fileupload
+
+
+    @Column()
+    subtitle: string
+
     @Column()
     title: string
 
-    @OneToOne(()=>Fileupload)
-    @JoinColumn()
-    image:Fileupload
+    @Column()
+    description: string
+
+
 
 
 

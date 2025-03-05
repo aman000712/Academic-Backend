@@ -19,6 +19,6 @@ export class Herosection {
 
     @OneToOne(() => Fileupload)
     @JoinColumn()
-    herosectionimage: Fileupload
+    herosectionimageid: Fileupload
 
 }

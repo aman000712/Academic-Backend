@@ -4,7 +4,7 @@ export class CreateEventsandupdateDto {
 
 
     @ApiProperty()
-    eventimage: any
+    eventimageid: any
 
     @ApiProperty()
     eventstatus: string;

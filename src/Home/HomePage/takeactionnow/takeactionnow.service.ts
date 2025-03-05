@@ -19,15 +19,15 @@ export class TakeactionnowService {
       throw new BadRequestException('Only one Takeactionnow record is allowed. Use update instead.');
     }
 
-    if (createTakeactionnowDto.image) {
-      const image = await this.takeactionnowRepository.manager.findOne(
+    if (createTakeactionnowDto.imageid) {
+      const imageid = await this.takeactionnowRepository.manager.findOne(
         Fileupload, {
         where: {
-          id: createTakeactionnowDto.image
+          id: createTakeactionnowDto.imageid
         }
       }
       );
-      if (!image) {
+      if (!imageid) {
         throw new NotFoundException('Image not found');
       }
     }
@@ -38,7 +38,7 @@ export class TakeactionnowService {
 
   async findAll() {
     return await this.takeactionnowRepository.find({
-      relations: ['image']
+      relations: ['imageid']
     });
   }
 
@@ -47,7 +47,7 @@ export class TakeactionnowService {
       where: {
         id: id
       },
-      relations: ['image']
+      relations: ['imageid']
     });
   }
 

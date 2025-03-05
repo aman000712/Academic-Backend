@@ -8,7 +8,7 @@ export class Herotestinomialssection {
     @PrimaryGeneratedColumn()
     id: number  
 
-    @Column()
+    @Column('text')
     description: string
 
     @Column()
@@ -20,5 +20,5 @@ export class Herotestinomialssection {
 
     @OneToOne(() => Fileupload)
     @JoinColumn()
-    herotestinomialssectionimage: Fileupload
+    herotestinomialssectionimageid: Fileupload
 }

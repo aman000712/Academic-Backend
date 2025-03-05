@@ -17,7 +17,7 @@ export class Testinomial {
 
     @OneToOne(()=>Fileupload)
     @JoinColumn()
-    testomonialimage: Fileupload
+    testomonialimageid: Fileupload
 
 
 

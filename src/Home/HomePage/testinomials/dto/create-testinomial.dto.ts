@@ -10,7 +10,7 @@ export class CreateTestinomialDto {
     name: string
 
     @ApiProperty()
-    testomonialimage: any
+    testomonialimageid: any
 
 
 

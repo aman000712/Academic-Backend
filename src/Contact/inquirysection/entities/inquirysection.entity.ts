@@ -1,17 +1,22 @@
 import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
 
 @Entity()
-export class Weareproudtop {
+export class Inquirysection {
 
     @PrimaryGeneratedColumn()
     id:number
 
     @Column()
-    title:string
-
+    name: string;
+  
     @Column()
-    description:string
-
+    email: string;
+  
+    @Column()
+    subject: string;
+  
+    @Column('text')
+    message: string;
 
 
 }

@@ -3,14 +3,15 @@ import { FileuploadService } from './fileupload.service';
 import { CreateFileuploadDto } from './dto/create-fileupload.dto';
 import { UpdateFileuploadDto } from './dto/update-fileupload.dto';
 import { FormDataRequest } from 'nestjs-form-data';
+import { ApiConsumes } from '@nestjs/swagger';
 
 @Controller('fileupload')
 export class FileuploadController {
-  constructor(private readonly fileuploadService: FileuploadService) {}
+  constructor(private readonly fileuploadService: FileuploadService) { }
 
   @Post()
   @FormDataRequest()
-
+  @ApiConsumes('multipart/form-data')
   create(@Body() createFileuploadDto: CreateFileuploadDto) {
     return this.fileuploadService.create(createFileuploadDto);
   }

@@ -21,16 +21,16 @@ export class TopprogramsService {
       throw new BadRequestException('topprogram already exists');
     }
 
-    if (createTopprogramDto.image) {
-      const image = await this.topprogramRepository.manager.findOne(
+    if (createTopprogramDto.imageid) {
+      const imageid = await this.topprogramRepository.manager.findOne(
         Fileupload, {
         where: {
-          id: createTopprogramDto.image
+          id: createTopprogramDto.imageid
         }
       }
       );
-      if (!image) {
-        throw new BadRequestException('image not found');
+      if (!imageid) {
+        throw new BadRequestException('imageid not found');
       }
     }
 
@@ -42,14 +42,14 @@ export class TopprogramsService {
 
   async findAll() {
     return this.topprogramRepository.find({
-      relations: ['image']
+      relations: ['imageid']
     });
   }
 
   findOne(id: number) {
     return this.topprogramRepository.findOne({
       where: { id: id },
-      relations: ['image']
+      relations: ['imageid']
     });
   }
 

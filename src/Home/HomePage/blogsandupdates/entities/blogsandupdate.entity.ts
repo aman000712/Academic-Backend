@@ -9,7 +9,7 @@ export class Blogsandupdate {
 
     @OneToOne(() => Fileupload)
     @JoinColumn()
-    blogimage: Fileupload
+    blogimageid: Fileupload
 
     @Column()
     status: string

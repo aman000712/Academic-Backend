@@ -17,16 +17,16 @@ export class StudenttestinomialsService {
 
   async create(createStudenttestinomialDto: CreateStudenttestinomialDto) {
 
-    if (createStudenttestinomialDto.studenttestinomialimage) {
-      const studenttestinomialimage = await this.studenttestinomialRepository.manager.findOne(
+    if (createStudenttestinomialDto.studenttestinomialimageid) {
+      const studenttestinomialimageid = await this.studenttestinomialRepository.manager.findOne(
         Fileupload, {
         where: {
-          id: createStudenttestinomialDto.studenttestinomialimage
+          id: createStudenttestinomialDto.studenttestinomialimageid
         }
       }
       );
-      if (!studenttestinomialimage) {
-        throw new Error('Fileupload not found');
+      if (!studenttestinomialimageid) {
+        throw new Error('Fileuploadid not found');
       }
     }
 
@@ -37,7 +37,7 @@ export class StudenttestinomialsService {
 
   async findAll() {
     return await this.studenttestinomialRepository.find({
-      relations: ['studenttestinomialimage'],
+      relations: ['studenttestinomialimageid'],
     });
   }
 
@@ -45,7 +45,8 @@ export class StudenttestinomialsService {
     return this.studenttestinomialRepository.findOne({
       where: {
         id: id
-      }
+      },
+      relations: ['studenttestinomialimageid']
     });
   }
 

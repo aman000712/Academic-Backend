@@ -19,15 +19,15 @@ export class PopularcoursesService {
 
     const popularcourse = this.popularcourseRepository.create(createPopularcourseDto);
 
-    if (createPopularcourseDto.image) {
-      const image = await this.popularcourseRepository.manager.findOne(
+    if (createPopularcourseDto.imageid) {
+      const imageid = await this.popularcourseRepository.manager.findOne(
         Fileupload, {
         where: {
-          id: createPopularcourseDto.image
+          id: createPopularcourseDto.imageid
         }
       }
       );
-      if (!image) {
+      if (!imageid) {
         throw new Error('Image not found');
       }
     }
@@ -38,7 +38,7 @@ export class PopularcoursesService {
 
   async findAll() {
     return await this.popularcourseRepository.find({
-      relations: ['image'],
+      relations: ['imageid'],
     });
   }
 
@@ -47,7 +47,7 @@ export class PopularcoursesService {
       where: {
         id: id,
       },
-      relations: ['image'],
+      relations: ['imageid'],
     })
   }
 

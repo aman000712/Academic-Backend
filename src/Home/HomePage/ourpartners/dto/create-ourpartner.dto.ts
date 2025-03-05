@@ -8,8 +8,8 @@ export class CreateOurpartnerDto {
     @ApiProperty()
     description: string
 
-    @ApiProperty()
-    logoimage: any
+    @ApiProperty({type:[Number]})
+    logoimageid: number[]
 
 
 

@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, NotFoundException } from '@nestjs/common';
 import { CreateFileuploadDto } from './dto/create-fileupload.dto';
 import { UpdateFileuploadDto } from './dto/update-fileupload.dto';
 import { InjectRepository } from '@nestjs/typeorm';
@@ -21,26 +21,15 @@ export class FileuploadService {
 
 
 
-    const filePath = createFileuploadDto.image.path;
-    const fileName = filePath.split('\\').pop() || filePath.split('/').pop(); 
+    const filePath = createFileuploadDto.images.path;
+    const fileName = filePath.split('\\').pop() || filePath.split('/').pop();
 
-    const baseUrl = this.configService.get<string>('ImageUrl');
-    const imageUrl = `${baseUrl}${fileName}`;
+    const baseUrl = this.configService.get<string>('imageurl');
+    const Url = `${baseUrl}${fileName}`;
 
-    const fileupload = this.fileuploadRepository.create({ image: imageUrl });
+    const fileupload = this.fileuploadRepository.create({ imageurl: Url });
     return this.fileuploadRepository.save(fileupload);
 
-
-
-
-
-
-
-
-    // const fileupload = this.fileuploadRepository.create({
-    //   image: createFileuploadDto.image.originalName, 
-    // });
-    // return this.fileuploadRepository.save(fileupload);
   }
 
   async findAll() {
@@ -66,8 +55,11 @@ export class FileuploadService {
       throw new Error('Fileupload not found');
     }
 
-    if (updateFileuploadDto.image) {
-      fileupload.image = updateFileuploadDto.image.originalName
+    if (updateFileuploadDto.images) {
+      const filePath = updateFileuploadDto.images.path;
+      const fileName = filePath.split('\\').pop() || filePath.split('/').pop();
+      const baseUrl = this.configService.get<string>('imageurl');
+      fileupload.imageurl = `${baseUrl}${fileName}`;
     }
 
 
@@ -75,7 +67,14 @@ export class FileuploadService {
     return this.fileuploadRepository.save(fileupload);
   }
 
-  remove(id: number) {
-    return this.fileuploadRepository.delete(id);
+  async remove(id: number) {
+    const fileupload = await this.fileuploadRepository.findOne({ where: { id } });
+
+    if (!fileupload) {
+      throw new NotFoundException(`File with id '${id}' not found.`);
+    }
+
+    await this.fileuploadRepository.delete(id);
+    return { message: `File with id '${id}' deleted successfully.` };
   }
 }

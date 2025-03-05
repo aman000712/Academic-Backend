@@ -22,15 +22,15 @@ export class BlogsandupdatesService {
 
     const blogsandupdate = this.blogsandupdateRepository.create(createBlogsandupdateDto);
 
-    if (blogsandupdate.blogimage) {
-      const blogimage = await this.blogsandupdateRepository.manager.findOne(
+    if (blogsandupdate.blogimageid) {
+      const blogimageid = await this.blogsandupdateRepository.manager.findOne(
         Fileupload, {
         where: {
-          id: createBlogsandupdateDto.blogimage
+          id: createBlogsandupdateDto.blogimageid
         }
       }
       );
-      if (!blogimage) {
+      if (!blogimageid) {
         throw new Error('blogimage not found')
       }
     }
@@ -41,7 +41,7 @@ export class BlogsandupdatesService {
 
   async findAll() {
     return await this.blogsandupdateRepository.find({
-      relations: ['blogimage'],
+      relations: ['blogimageid'],
     });
   }
 
@@ -50,7 +50,7 @@ export class BlogsandupdatesService {
       where: {
         id: id
       },
-      relations: ['blogimage'],
+      relations: ['blogimageid'],
     });
   }
 

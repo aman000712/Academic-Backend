@@ -9,7 +9,7 @@ export class CreateStudenttestinomialDto {
     name: string
 
     @ApiProperty()
-    studenttestinomialimage: any
+    studenttestinomialimageid: any
 
 
 }

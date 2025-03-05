@@ -14,7 +14,7 @@ export class CreateHerotestinomialssectionDto {
     position: string
 
     @ApiProperty()
-    herotestinomialssectionimage: any
+    herotestinomialssectionimageid: any
 
 
 

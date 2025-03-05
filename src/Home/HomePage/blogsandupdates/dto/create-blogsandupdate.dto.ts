@@ -9,7 +9,7 @@ export class CreateBlogsandupdateDto {
     description: string
 
     @ApiProperty()
-    blogimage: any
+    blogimageid: any
 
     @ApiProperty()
     status: string

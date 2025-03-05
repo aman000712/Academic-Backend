@@ -8,7 +8,7 @@ export class Fileupload {
     id: number
 
     @Column()
-    image:string
+    imageurl:string
 
 
 }

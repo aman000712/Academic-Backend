@@ -18,16 +18,16 @@ export class TestinomialsService {
 
     const testinomial = this.testinomialRepository.create(createTestinomialDto);
 
-    if (createTestinomialDto.testomonialimage) {
-      const testinomialimage = await this.testinomialRepository.manager.findOne(
+    if (createTestinomialDto.testomonialimageid) {
+      const testinomialimageid = await this.testinomialRepository.manager.findOne(
         Fileupload, {
         where: {
-          id: createTestinomialDto.testomonialimage
+          id: createTestinomialDto.testomonialimageid
         }
       }
       );
-      if (!testinomialimage) {
-        throw new Error('testinomialimage not found');
+      if (!testinomialimageid) {
+        throw new Error('testinomialimageid not found');
       }
     }
 
@@ -37,7 +37,7 @@ export class TestinomialsService {
 
   async findAll() {
     return await this.testinomialRepository.find({
-      relations: ['testomonialimage']
+      relations: ['testomonialimageid']
     })
   }
 
@@ -46,7 +46,7 @@ export class TestinomialsService {
       where: {
         id: id
       },
-      relations: ['testomonialimage']
+      relations: ['testomonialimageid']
     });
   }
 

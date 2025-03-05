@@ -27,13 +27,13 @@ export class WhychooseusService {
     }
 
 
-    if (createWhychooseusDto.image) {
-      const image = await this.whychooseusRepository.manager.findOne(
+    if (createWhychooseusDto.imageid) {
+      const imageid = await this.whychooseusRepository.manager.findOne(
         Fileupload, {
-        where: { id: createWhychooseusDto.image }
+        where: { id: createWhychooseusDto.imageid }
       });
-      if (!image) {
-        throw new Error('Image not found');
+      if (!imageid) {
+        throw new Error('Imageid not found');
       }
     }
     const whychooseus = this.whychooseusRepository.create(createWhychooseusDto);
@@ -47,7 +47,7 @@ export class WhychooseusService {
 
   async findAll() {
     return this.whychooseusRepository.find({
-      relations: ['image'],
+      relations: ['imageid'],
     });
   }
 
@@ -56,7 +56,7 @@ export class WhychooseusService {
       where: {
         id: id,
       },
-      relations: ['image'],
+      relations: ['imageid'],
     });
   }
 

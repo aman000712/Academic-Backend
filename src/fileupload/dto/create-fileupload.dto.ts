@@ -9,7 +9,7 @@ export class CreateFileuploadDto {
         format:'binary'
     })
     @IsFile()
-    image: FileSystemStoredFile
+    images: FileSystemStoredFile
 
 
 }

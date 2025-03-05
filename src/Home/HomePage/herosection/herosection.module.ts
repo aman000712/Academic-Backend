@@ -3,6 +3,7 @@ import { HerosectionService } from './herosection.service';
 import { HerosectionController } from './herosection.controller';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { Herosection } from './entities/herosection.entity';
+import { Fileupload } from 'src/fileupload/entities/fileupload.entity';
 
 @Module({
 
@@ -10,6 +11,7 @@ import { Herosection } from './entities/herosection.entity';
   imports: [
     TypeOrmModule.forFeature([
       Herosection,
+      Fileupload,
     ])
   ],
 

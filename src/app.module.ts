@@ -47,8 +47,21 @@ import { Eventsandupdatestop } from './Home/HeroTop/eventsandupdatestop/entities
 import { Popularcoursestop } from './Home/HeroTop/popularcoursestop/entities/popularcoursestop.entity';
 import { Testinomialstop } from './Home/HeroTop/testinomialstop/entities/testinomialstop.entity';
 import { Whychooseustop } from './Home/HeroTop/whychooseustop/entities/whychooseustop.entity';
-import { WeareproudtopModule } from './weareproudtop/weareproudtop.module';
-import { Weareproudtop } from './weareproudtop/entities/weareproudtop.entity';
+import { Blogsandupdate } from './Home/HomePage/blogsandupdates/entities/blogsandupdate.entity';
+import { Herotestinomialssection } from './Home/Testinomials/herotestinomialssection/entities/herotestinomialssection.entity';
+import { TopHerosectionModule } from './top-herosection/top-herosection.module';
+import { TopHerosection } from './top-herosection/entities/top-herosection.entity';
+import { CompanylogoModule } from './companylogo/companylogo.module';
+import { Companylogo } from './companylogo/entities/companylogo.entity';
+import { Weareproudtop } from './Home/HomePage/weareproudtop/entities/weareproudtop.entity';
+import { Inquirysection } from './Contact/inquirysection/entities/inquirysection.entity';
+import { Contactinfo } from './Contact/contactinfo/entities/contactinfo.entity';
+import { Contactus } from './Contact/contactus/entities/contactus.entity';
+import { WeareproudtopModule } from './Home/HomePage/weareproudtop/weareproudtop.module';
+import { ContactusModule } from './Contact/contactus/contactus.module';
+import { ContactinfoModule } from './Contact/contactinfo/contactinfo.module';
+import { EligibilityherotextModule } from './Pages/Eligibility/eligibilityherotext/eligibilityherotext.module';
+import { InquirysectionModule } from './Contact/inquirysection/inquirysection.module';
 
 @Module({
   imports: [
@@ -83,7 +96,7 @@ import { Weareproudtop } from './weareproudtop/entities/weareproudtop.entity';
       username: 'root',
       password: 'Amanxtteri0007@',
       database: 'academic',
-      entities: [Fileupload,Herosection, Aboutsection, Milestonesection,Popularcourse,Whychooseus,Ourpartner,Testinomial,Eventsandupdate,Takeactionnow,Topapplynow,Topprogram,Blogandupdatestop,Eventsandupdatestop,Popularcoursestop,Testinomialstop,Whychooseustop,Weareproudtop],
+      entities: [Fileupload,Herosection, Aboutsection, Milestonesection,Popularcourse,Whychooseus,Ourpartner,Testinomial,Eventsandupdate,Takeactionnow,Topapplynow,Topprogram,Blogandupdatestop,Eventsandupdatestop,Popularcoursestop,Testinomialstop,Whychooseustop,Weareproudtop,Blogsandupdate,TopHerosection,Herotestinomialssection,Companylogo,Contactus,Contactinfo,Inquirysection],
       synchronize: true,
     }),
     HerosectionModule,
@@ -113,6 +126,12 @@ import { Weareproudtop } from './weareproudtop/entities/weareproudtop.entity';
     EventsandupdatestopModule,
     BlogandupdatestopModule,
     WeareproudtopModule,
+    TopHerosectionModule,
+    ContactusModule,
+    CompanylogoModule,
+    ContactinfoModule,
+    EligibilityherotextModule,
+    InquirysectionModule,
   ],
   controllers: [AppController],
   providers: [AppService],

@@ -12,7 +12,7 @@ export class Topprogram {
 
     @OneToOne(() => Fileupload)
     @JoinColumn()
-    image: Fileupload
+    imageid: Fileupload
 
 
     @Column()

@@ -8,7 +8,7 @@ export class Studenttestinomial {
     @PrimaryGeneratedColumn()
     id: number
 
-    @Column()
+    @Column('text')
     description:string
 
     @Column()
@@ -16,7 +16,7 @@ export class Studenttestinomial {
 
     @OneToOne(()=>Fileupload)
     @JoinColumn()
-    studenttestinomialimage:Fileupload
+    studenttestinomialimageid:Fileupload
 
 
 

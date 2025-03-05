@@ -18,15 +18,15 @@ export class EventsandupdatesService {
 
   async create(createEventsandupdateDto: CreateEventsandupdateDto) {
     const eventsandupdate = this.eventsandupdateRepository.create(createEventsandupdateDto);
-    if (eventsandupdate.eventimage) {
-      const eventimage = await this.eventsandupdateRepository.manager.findOne(
+    if (eventsandupdate.eventimageid) {
+      const eventimageid = await this.eventsandupdateRepository.manager.findOne(
         Fileupload, {
         where: {
-          id: createEventsandupdateDto.eventimage
+          id: createEventsandupdateDto.eventimageid
         }
       }
       );
-      if (!eventimage) {
+      if (!eventimageid) {
         throw new Error('Fileupload not found');
       }
     }
@@ -35,7 +35,7 @@ export class EventsandupdatesService {
 
   async findAll() {
     return await this.eventsandupdateRepository.find({
-      relations: ['eventimage']
+      relations: ['eventimageid']
     });
   }
 
@@ -44,7 +44,7 @@ export class EventsandupdatesService {
       where: {
         id: id
       },
-      relations: ['eventimage'],
+      relations: ['eventimageid'],
     });
   }
 

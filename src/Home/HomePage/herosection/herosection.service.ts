@@ -21,16 +21,16 @@ export class HerosectionService {
       throw new BadRequestException('Hero section already exists. You can only update it.');
     }
 
-    if (createHerosectionDto.herosectionimage) {
-      const herosectionimage = await this.herosectionRepository.manager.findOne(
+    if (createHerosectionDto.herosectionimageid) {
+      const herosectionimageid = await this.herosectionRepository.manager.findOne(
         Fileupload, {
         where: {
-          id: createHerosectionDto.herosectionimage
+          id: createHerosectionDto.herosectionimageid
         }
       }
       );
-      if (!herosectionimage) {
-        throw new NotFoundException('herosectionimage not found');
+      if (!herosectionimageid) {
+        throw new NotFoundException('herosectionimageid not found');
       }
     }
 
@@ -40,7 +40,7 @@ export class HerosectionService {
 
   async findAll() {
     return this.herosectionRepository.find({
-      relations: ['herosectionimage']
+      relations: ['herosectionimageid']
     });
   }
 

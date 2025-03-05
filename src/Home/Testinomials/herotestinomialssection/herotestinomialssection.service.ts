@@ -21,17 +21,17 @@ export class HerotestinomialssectionService {
       throw new BadRequestException('Only one Herotestinomialssection record is allowed. Use update instead.');
     }
 
-    if (createHerotestinomialssectionDto.herotestinomialssectionimage) {
-      const herotestinomialssectionimage = await this.herotestinomialssectionRepository.manager.findOne(
+    if (createHerotestinomialssectionDto.herotestinomialssectionimageid) {
+      const herotestinomialssectionimageid = await this.herotestinomialssectionRepository.manager.findOne(
         Fileupload,
         {
           where: {
-            id: createHerotestinomialssectionDto.herotestinomialssectionimage
+            id: createHerotestinomialssectionDto.herotestinomialssectionimageid
           }
         }
       );
-      if (!herotestinomialssectionimage) {
-        throw new NotFoundException('herotestinomialssectionimage not found');
+      if (!herotestinomialssectionimageid) {
+        throw new NotFoundException('herotestinomialssectionimageid not found');
       }
     }
 
@@ -41,7 +41,7 @@ export class HerotestinomialssectionService {
 
   async findAll() {
     return await this.herotestinomialssectionRepository.find({
-      relations: ['herotestinomialssectionimage']
+      relations: ['herotestinomialssectionimageid']
     });
   }
 
@@ -50,7 +50,7 @@ export class HerotestinomialssectionService {
       where: {
         id: id
       },
-      relations: ['herotestinomialssectionimage']
+      relations: ['herotestinomialssectionimageid']
     });
   }
 

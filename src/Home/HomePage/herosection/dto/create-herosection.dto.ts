@@ -12,7 +12,7 @@ export class CreateHerosectionDto {
     description: string;
 
     @ApiProperty()
-    herosectionimage: any
+    herosectionimageid: any
 
     
 

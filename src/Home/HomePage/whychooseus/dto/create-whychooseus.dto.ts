@@ -15,7 +15,7 @@ export class CreateWhychooseusDto {
     options: string[];
 
     @ApiProperty()
-    image: any
+    imageid: any
 
 
 

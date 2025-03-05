@@ -4,6 +4,7 @@ import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
 import * as dotenv from 'dotenv';
 import { join } from 'path';
 import * as express from 'express';
+import { ValidationPipe } from '@nestjs/common';
 
 
 async function bootstrap() {
@@ -13,8 +14,8 @@ async function bootstrap() {
 
 
   app.enableCors({
-    origin: '*', 
-    methods: 'GET, POST, PUT, DELETE',
+    origin: '*',
+    methods: 'GET, POST, PUT, PATCH, DELETE',
     allowedHeaders: 'Content-Type, Authorization',
   });
 
@@ -22,12 +23,13 @@ async function bootstrap() {
     .setTitle('Abhyam Academy')
     .setDescription('This is Abhyam Academy API')
     .setVersion('1.0')
-    // .addTag('cats')s
     .build();
   const documentFactory = () => SwaggerModule.createDocument(app, config);
   SwaggerModule.setup('api', app, documentFactory);
 
   app.use('/uploads', express.static(join(__dirname, '..', 'uploads')));
+
+  app.useGlobalPipes(new ValidationPipe());
 
   await app.listen(process.env.PORT ?? 5000, '0.0.0.0');
 

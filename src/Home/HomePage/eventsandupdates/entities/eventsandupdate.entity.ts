@@ -9,7 +9,7 @@ export class Eventsandupdate {
 
     @OneToOne(() => Fileupload)
     @JoinColumn()
-    eventimage: Fileupload
+    eventimageid: Fileupload
 
     @Column()
     eventstatus:string
