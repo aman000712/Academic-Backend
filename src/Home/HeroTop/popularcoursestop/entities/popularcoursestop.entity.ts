@@ -7,6 +7,10 @@ export class Popularcoursestop {
     @PrimaryGeneratedColumn()
     id:number
 
+
+    @Column()
+    subtitle:string
+
     @Column()
     title:string
 

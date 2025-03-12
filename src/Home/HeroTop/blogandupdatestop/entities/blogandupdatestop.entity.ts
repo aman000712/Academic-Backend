@@ -7,6 +7,10 @@ export class Blogandupdatestop {
     id: number
 
     @Column()
+    subtitle: string
+
+
+    @Column()
     title: string
 
     @Column()

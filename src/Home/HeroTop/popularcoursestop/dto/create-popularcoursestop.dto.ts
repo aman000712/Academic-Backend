@@ -4,6 +4,9 @@ export class CreatePopularcoursestopDto {
 
 
     @ApiProperty()
+    subtitle: string
+
+    @ApiProperty()
     title: string
 
 

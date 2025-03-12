@@ -8,6 +8,9 @@ export class Eventsandupdatestop {
     id: number
 
     @Column()
+    subtitle: string
+
+    @Column()
     title: string
 
     @Column()

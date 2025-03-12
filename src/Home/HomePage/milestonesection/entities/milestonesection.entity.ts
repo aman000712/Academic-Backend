@@ -8,11 +8,13 @@ export class Milestonesection {
     @PrimaryGeneratedColumn()
     id: number
 
-    @Column({type: 'json'})
-    totalmilestone: number[]
+    @Column()
+    count: string
 
-    @Column({type: 'json'})
-    type: string[];
+    @Column()
+    label: string;
+
+
 
     
 

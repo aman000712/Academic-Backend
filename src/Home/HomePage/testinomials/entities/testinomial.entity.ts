@@ -15,6 +15,13 @@ export class Testinomial {
     @Column()
     name: string
 
+    @Column()
+    position: string
+
+    @Column()
+    role: string
+
+
     @OneToOne(()=>Fileupload)
     @JoinColumn()
     testomonialimageid: Fileupload

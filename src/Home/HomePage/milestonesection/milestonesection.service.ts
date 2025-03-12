@@ -14,16 +14,13 @@ export class MilestonesectionService {
 
 
   async create(createMilestonesectionDto: CreateMilestonesectionDto) {
-
-    const check = await this.milestonesectionRepository.findOne({
-      where: { }
-    })
-    if (!check) {
-      throw new BadRequestException('milestone section already exists. You can only update it.');
-    }
     const milestonesection = this.milestonesectionRepository.create(createMilestonesectionDto);
+    return this.milestonesectionRepository.save(milestonesection);
+  }
 
-    return this.milestonesectionRepository.save(milestonesection);;
+
+  findAll() {
+    return this.milestonesectionRepository.find();
   }
 
 
@@ -53,5 +50,9 @@ export class MilestonesectionService {
     return this.milestonesectionRepository.save(milestonesection);
   }
 
+
+  remove(id: number) {
+    return this.milestonesectionRepository.delete(id);
+  }
 
 }

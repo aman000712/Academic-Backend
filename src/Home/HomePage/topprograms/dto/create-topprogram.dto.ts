@@ -1,10 +1,16 @@
 import { ApiProperty } from "@nestjs/swagger";
+import { IsArray } from "class-validator";
 
 export class CreateTopprogramDto {
 
 
     @ApiProperty()
-    imageid: any;
+    subtitle: string;
+
+
+    @ApiProperty({type:[Number]})
+    @IsArray()
+    imageid: Number[];
 
 
     @ApiProperty()

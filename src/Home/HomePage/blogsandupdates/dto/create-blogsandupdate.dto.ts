@@ -21,7 +21,7 @@ export class CreateBlogsandupdateDto {
     blogname: string
 
     @ApiProperty()
-    blogdate: number
+    blogdate: string
 
 
 

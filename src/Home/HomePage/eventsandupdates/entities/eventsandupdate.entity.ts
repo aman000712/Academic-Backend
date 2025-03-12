@@ -15,7 +15,7 @@ export class Eventsandupdate {
     eventstatus:string
 
     @Column()
-    eventdate:number
+    eventdate:string
 
     @Column()
     eventlocation:string

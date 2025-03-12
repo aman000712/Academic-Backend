@@ -13,11 +13,11 @@ export class Eligibilityherotext {
     @Column('text')
     description:string
 
-    @Column()
+    @Column('json')
     options:string[];
     
-    @Column()
-    notice:string
+    @Column('text')
+    message:string
 
 
 }

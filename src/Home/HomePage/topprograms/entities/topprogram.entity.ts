@@ -1,5 +1,5 @@
 import { Fileupload } from "src/fileupload/entities/fileupload.entity";
-import { Column, Entity, JoinColumn, OneToOne, PrimaryGeneratedColumn } from "typeorm";
+import { Column, Entity, JoinTable, ManyToMany, PrimaryGeneratedColumn } from "typeorm";
 
 
 @Entity()
@@ -9,10 +9,13 @@ export class Topprogram {
     @PrimaryGeneratedColumn()
     id: number
 
+    @Column()
+    subtitle: string
 
-    @OneToOne(() => Fileupload)
-    @JoinColumn()
-    imageid: Fileupload
+
+    @ManyToMany(() => Fileupload)
+    @JoinTable()
+    imageid: Fileupload[];
 
 
     @Column()

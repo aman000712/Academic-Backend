@@ -10,7 +10,7 @@ export class CreateEventsandupdateDto {
     eventstatus: string;
 
     @ApiProperty()
-    eventdate: number;
+    eventdate: string;
 
     @ApiProperty()
     eventlocation: string;

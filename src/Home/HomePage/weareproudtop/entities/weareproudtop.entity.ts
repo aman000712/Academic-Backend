@@ -4,13 +4,16 @@ import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
 export class Weareproudtop {
 
     @PrimaryGeneratedColumn()
-    id:number
+    id: number
 
     @Column()
-    title:string
+    subtitle: string
+
+    @Column()
+    title: string
 
     @Column('text')
-    description:string
+    description: string
 
 
 

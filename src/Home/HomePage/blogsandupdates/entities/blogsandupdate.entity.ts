@@ -21,7 +21,7 @@ export class Blogsandupdate {
     blogname: string
 
     @Column()
-    blogdate: number
+    blogdate: string
 
 
 

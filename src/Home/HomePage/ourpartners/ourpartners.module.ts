@@ -11,7 +11,6 @@ import { Fileupload } from 'src/fileupload/entities/fileupload.entity';
 
     TypeOrmModule.forFeature([
       Ourpartner,
-      Fileupload,
     ])
 
   ],
