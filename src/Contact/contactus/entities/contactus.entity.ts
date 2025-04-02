@@ -1,4 +1,4 @@
-import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
+import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from "typeorm";
 
 @Entity()
 export class Contactus {
@@ -7,7 +7,6 @@ export class Contactus {
     @PrimaryGeneratedColumn()
     id:number
 
-   
 
     @Column({type:'json'})
     contactnumber:number[];

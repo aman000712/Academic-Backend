@@ -13,7 +13,7 @@ export class Whychooseus {
     @Column()
     description: string
 
-    @Column({type: 'json'})
+    @Column('json')
     options: string[];
 
     @OneToOne(()=>Fileupload)

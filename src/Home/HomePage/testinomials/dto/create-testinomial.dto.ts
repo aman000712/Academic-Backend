@@ -10,6 +10,12 @@ export class CreateTestinomialDto {
     name: string
 
     @ApiProperty()
+    position: string
+
+    @ApiProperty()
+    role: string
+
+    @ApiProperty()
     testomonialimageid: any
 
 

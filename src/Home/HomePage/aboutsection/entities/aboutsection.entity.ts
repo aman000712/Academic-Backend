@@ -13,7 +13,7 @@ export class Aboutsection {
     @Column()
     subtitle:string
 
-    @Column()
+    @Column('text')
     description:string
 
 

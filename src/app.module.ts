@@ -27,13 +27,11 @@ import { Testinomial } from './Home/HomePage/testinomials/entities/testinomial.e
 import { Eventsandupdate } from './Home/HomePage/eventsandupdates/entities/eventsandupdate.entity';
 import { Takeactionnow } from './Home/HomePage/takeactionnow/entities/takeactionnow.entity';
 import { HerotestinomialssectionModule } from './Home/Testinomials/herotestinomialssection/herotestinomialssection.module';
-import { TopapplynowModule } from './Home/Applynow/topapplynow/topapplynow.module';
 import { DiplomainhotelmtopModule } from './Courses/DiplomaInHotelm/diplomainhotelmtop/diplomainhotelmtop.module';
 import { DepartmentcontactModule } from './Courses/DiplomaInHotelm/departmentcontact/departmentcontact.module';
 import { WhythiscourseModule } from './Courses/DiplomaInHotelm/whythiscourse/whythiscourse.module';
 import { BenefitsModule } from './Courses/DiplomaInHotelm/benefits/benefits.module';
 import { CourseoverviewModule } from './Courses/courseoverview/courseoverview.module';
-import { Topapplynow } from './Home/Applynow/topapplynow/entities/topapplynow.entity';
 import { StudenttestinomialsModule } from './Home/Testinomials/studenttestinomials/studenttestinomials.module';
 import { TopprogramsModule } from './Home/HomePage/topprograms/topprograms.module';
 import { PopularcoursestopModule } from './Home/HeroTop/popularcoursestop/popularcoursestop.module';
@@ -62,7 +60,25 @@ import { ContactusModule } from './Contact/contactus/contactus.module';
 import { ContactinfoModule } from './Contact/contactinfo/contactinfo.module';
 import { EligibilityherotextModule } from './Pages/Eligibility/eligibilityherotext/eligibilityherotext.module';
 import { InquirysectionModule } from './Contact/inquirysection/inquirysection.module';
-
+import { Eligibilityherotext } from './Pages/Eligibility/eligibilityherotext/entities/eligibilityherotext.entity';
+import { Studenttestinomial } from './Home/Testinomials/studenttestinomials/entities/studenttestinomial.entity';
+import { Eligibilityherosection } from './Pages/Eligibility/eligibilityherosection/entities/eligibilityherosection.entity';
+import { Ourpartnerslogo } from './Home/HomePage/ourpartnerslogos/entities/ourpartnerslogo.entity';
+import { Herotestinomialstop } from './Home/Testinomials/herotestinomialstop/entities/herotestinomialstop.entity';
+import { Topstudenttestimonial } from './Home/Testinomials/topstudenttestimonials/entities/topstudenttestimonial.entity';
+import { Eligibilitycontactinfo } from './Pages/Eligibility/eligibilitycontactinfo/entities/eligibilitycontactinfo.entity';
+import { Eligibilityrelevantquestion } from './Pages/Eligibility/eligibilityrelevantquestions/entities/eligibilityrelevantquestion.entity';
+import { Eligibilitycontactforadvice } from './Pages/Eligibility/eligibilitycontactforadvice/entities/eligibilitycontactforadvice.entity';
+import { EligibilityherosectionModule } from './Pages/Eligibility/eligibilityherosection/eligibilityherosection.module';
+import { OurpartnerslogosModule } from './Home/HomePage/ourpartnerslogos/ourpartnerslogos.module';
+import { HerotestinomialstopModule } from './Home/Testinomials/herotestinomialstop/herotestinomialstop.module';
+import { EligibilitycontactinfoModule } from './Pages/Eligibility/eligibilitycontactinfo/eligibilitycontactinfo.module';
+import { TopstudenttestimonialsModule } from './Home/Testinomials/topstudenttestimonials/topstudenttestimonials.module';
+import { EligibilitycontactforadviceModule } from './Pages/Eligibility/eligibilitycontactforadvice/eligibilitycontactforadvice.module';
+import { EligibilityrelevantquestionsModule } from './Pages/Eligibility/eligibilityrelevantquestions/eligibilityrelevantquestions.module';
+import { join } from 'path';
+import { ImageuploadModule } from './imageupload/imageupload.module';
+import { ServeStaticModule } from '@nestjs/serve-static';
 @Module({
   imports: [
     ConfigModule.forRoot({
@@ -70,35 +86,42 @@ import { InquirysectionModule } from './Contact/inquirysection/inquirysection.mo
       envFilePath: '.env'
     }),
 
-
+    // ServeStaticModule.forRoot({
+    //   rootPath: join(__dirname, '..', 'uploads'), // Serve static files from the 'uploads' folder
+    //   serveRoot: '/uploads', // Access images via '/uploads'
+    // }),
     NestjsFormDataModule.config({
       storage: FileSystemStoredFile,
-      fileSystemStoragePath: 'uploads',
+      fileSystemStoragePath:'uploads',
       isGlobal: true,
       autoDeleteFile: false,
       limits: {
         files: 10,
-        fileSize: 1024 * 1024 * 5,
+        fileSize: 1024 * 1024 * 50,
       },
       cleanupAfterSuccessHandle: false,
     }),
-
-
-
-
-
-
-
     TypeOrmModule.forRoot({
       type: 'mysql',
-      host: 'localhost',
+      host: 'titan.de.hostns.io',
       port: 3306,
-      username: 'root',
-      password: 'Amanxtteri0007@',
-      database: 'academic',
-      entities: [Fileupload,Herosection, Aboutsection, Milestonesection,Popularcourse,Whychooseus,Ourpartner,Testinomial,Eventsandupdate,Takeactionnow,Topapplynow,Topprogram,Blogandupdatestop,Eventsandupdatestop,Popularcoursestop,Testinomialstop,Whychooseustop,Weareproudtop,Blogsandupdate,TopHerosection,Herotestinomialssection,Companylogo,Contactus,Contactinfo,Inquirysection],
-      synchronize: true,
+      username: 'earibtco_kisaaayam',
+      password: 'aayamglobal#123',
+      database: 'earibtco_aayamglobal',
+      autoLoadEntities:true,
+      synchronize: false,
     }),
+    // TypeOrmModule.forRoot({
+    //   type: 'mysql',
+    //   host: 's1323.sgp1.mysecurecloudhost.com',
+    //   port: 3306,
+    //   username: 'aayamglo_kisanmahat',
+    //   password: '13880ksM#',
+    //   database: 'aayamglo_mainDatabase',
+    //   autoLoadEntities:true,
+    //   synchronize: true,
+    // }),
+    // entities: [Fileupload,Herosection, Aboutsection, Milestonesection,Popularcourse,Whychooseus,Ourpartner,Testinomial,Eventsandupdate,Takeactionnow,Topprogram,Blogandupdatestop,Eventsandupdatestop,Popularcoursestop,Testinomialstop,Whychooseustop,Weareproudtop,Blogsandupdate,TopHerosection,Herotestinomialssection,Companylogo,Contactus,Contactinfo,Inquirysection,Eligibilityherosection,Ourpartnerslogo,Eligibilityherotext,Herotestinomialstop,Studenttestinomial,Topstudenttestimonial,Eligibilityherosection,Eligibilitycontactinfo,Eligibilityrelevantquestion,Eligibilitycontactforadvice],
     HerosectionModule,
     AboutsectionModule,
     MilestonesectionModule,
@@ -112,7 +135,6 @@ import { InquirysectionModule } from './Contact/inquirysection/inquirysection.mo
     FrequentlyaskedModule,
     TakeactionnowModule,
     HerotestinomialssectionModule,
-    TopapplynowModule,
     DiplomainhotelmtopModule,
     DepartmentcontactModule,
     WhythiscourseModule,
@@ -132,6 +154,14 @@ import { InquirysectionModule } from './Contact/inquirysection/inquirysection.mo
     ContactinfoModule,
     EligibilityherotextModule,
     InquirysectionModule,
+    EligibilityherosectionModule,
+    OurpartnerslogosModule,
+    HerotestinomialstopModule,
+    TopstudenttestimonialsModule,
+    EligibilitycontactinfoModule,
+    EligibilitycontactforadviceModule,
+    EligibilityrelevantquestionsModule,
+    ImageuploadModule,
   ],
   controllers: [AppController],
   providers: [AppService],

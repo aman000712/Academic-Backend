@@ -8,6 +8,9 @@ export class Testinomialstop {
     id:number
 
     @Column()
+    subtitle:string
+
+    @Column()
     title:string
 
 

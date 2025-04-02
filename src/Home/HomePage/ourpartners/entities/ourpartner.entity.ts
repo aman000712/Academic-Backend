@@ -9,15 +9,11 @@ export class Ourpartner {
     id: number
 
     @Column()
-    title: string
+    subtitle: string
 
     @Column()
+    title: string
+
+    @Column('text')
     description: string
-
-    @ManyToMany(()=>Fileupload)
-    @JoinTable()
-    logoimageid:Fileupload[]
-
-
-
 }

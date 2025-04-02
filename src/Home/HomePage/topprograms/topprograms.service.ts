@@ -2,7 +2,7 @@ import { BadRequestException, Injectable, NotFoundException } from '@nestjs/comm
 import { CreateTopprogramDto } from './dto/create-topprogram.dto';
 import { UpdateTopprogramDto } from './dto/update-topprogram.dto';
 import { Topprogram } from './entities/topprogram.entity';
-import { Repository } from 'typeorm';
+import { In, Repository } from 'typeorm';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Fileupload } from 'src/fileupload/entities/fileupload.entity';
 
@@ -15,27 +15,23 @@ export class TopprogramsService {
 
 
   async create(createTopprogramDto: CreateTopprogramDto) {
-
-    const datas = await this.topprogramRepository.findOne({ where: {} });
-    if (datas) {
-      throw new BadRequestException('topprogram already exists');
+    const existing = await this.topprogramRepository.findOne({ where: {} });
+    if (existing) {
+      throw new BadRequestException('Topprogram already exists');
     }
 
-    if (createTopprogramDto.imageid) {
-      const imageid = await this.topprogramRepository.manager.findOne(
-        Fileupload, {
-        where: {
-          id: createTopprogramDto.imageid
-        }
-      }
-      );
-      if (!imageid) {
-        throw new BadRequestException('imageid not found');
-      }
+    const images = await this.topprogramRepository.manager.find(Fileupload, {
+      where: { id: In(createTopprogramDto.imageid) },
+    });
+
+    if (images.length !== createTopprogramDto.imageid.length) {
+      throw new BadRequestException('One or more image IDs not found');
     }
 
-    const topprogram = this.topprogramRepository.create(createTopprogramDto);
-
+    const topprogram = this.topprogramRepository.create({
+      ...createTopprogramDto,
+      imageid: images,
+    });
 
     return this.topprogramRepository.save(topprogram);
   }
@@ -53,23 +49,46 @@ export class TopprogramsService {
     });
   }
 
+
+
   async update(id: number, updateTopprogramDto: UpdateTopprogramDto) {
 
     const topprogram = await this.topprogramRepository.findOne({
-      where: {
-        id: id
-      }
-    }
-    );
+      where: { id: id },
+    });
+
     if (!topprogram) {
-      throw new NotFoundException('topprogram not found');
+      throw new NotFoundException('Topprogram not found');
     }
 
-    Object.assign(topprogram, updateTopprogramDto);
+    if (updateTopprogramDto.title) {
+      topprogram.title = updateTopprogramDto.title;
+    }
+    
+    if (updateTopprogramDto.description) {
+      topprogram.description = updateTopprogramDto.description;
+    }
+
+    if (updateTopprogramDto.subtitle) {
+      topprogram.subtitle = updateTopprogramDto.subtitle;
+    }
+
+    if (updateTopprogramDto.imageid?.length) {
+      const images = await this.topprogramRepository.manager.find(Fileupload, {
+        where: { id: In(updateTopprogramDto.imageid) },
+      })
+
+      if (images.length !== updateTopprogramDto.imageid.length) {
+        throw new NotFoundException('One or more image IDs not found');
+      }
+
+      topprogram.imageid = images;
+    }
 
 
 
-    return this.topprogramRepository.save(topprogram);
+    return await this.topprogramRepository.save(topprogram);
+
   }
 
 

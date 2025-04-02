@@ -22,10 +22,12 @@ export class FileuploadService {
 
 
     const filePath = createFileuploadDto.images.path;
+    console.log('here',createFileuploadDto,createFileuploadDto.images)
     const fileName = filePath.split('\\').pop() || filePath.split('/').pop();
+    console.log(filePath.split('uploads\\'))
 
     const baseUrl = this.configService.get<string>('imageurl');
-    const Url = `${baseUrl}${fileName}`;
+    const Url = `${baseUrl}${filePath.split('uploads\\')[1]}`;
 
     const fileupload = this.fileuploadRepository.create({ imageurl: Url });
     return this.fileuploadRepository.save(fileupload);

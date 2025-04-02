@@ -13,13 +13,27 @@ export class MilestonesectionController {
   }
 
 
+  @Get()
+  findAll() {
+    return this.milestonesectionService.findAll();
+  }
+
   @Get(':id')
   findOne(@Param('id') id: string) {
     return this.milestonesectionService.findOne(+id);
   }
 
+
   @Patch(':id')
   update(@Param('id') id: string, @Body() updateMilestonesectionDto: UpdateMilestonesectionDto) {
     return this.milestonesectionService.update(+id, updateMilestonesectionDto);
   }
+
+
+
+  @Delete(':id')
+  remove(@Param('id') id: string) {
+    return this.milestonesectionService.remove(+id);
+  }
+
 }

@@ -4,14 +4,13 @@ import { IsString } from "class-validator";
 export class CreateMilestonesectionDto {
 
     @ApiProperty()
-    @IsString()
-    totalmilestone: number[];
+    count: string;
 
     @ApiProperty()
-    @IsString()
-    type: string[];
+    label: string;
 
 
 
+ 
 
 }

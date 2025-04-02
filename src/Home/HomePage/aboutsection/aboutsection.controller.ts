@@ -9,6 +9,7 @@ export class AboutsectionController {
 
   @Post()
   create(@Body() createAboutsectionDto: CreateAboutsectionDto) {
+    console.log("Received DTO:", createAboutsectionDto);
     return this.aboutsectionService.create(createAboutsectionDto);
   }
 
