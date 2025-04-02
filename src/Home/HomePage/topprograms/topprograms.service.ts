@@ -17,7 +17,7 @@ export class TopprogramsService {
   async create(createTopprogramDto: CreateTopprogramDto) {
     const existing = await this.topprogramRepository.findOne({ where: {} });
     if (existing) {
-      throw new BadRequestException('Topprogram already exists');
+      throw new BadRequestException('Topprogram already exists you can only patch');
     }
 
     const images = await this.topprogramRepository.manager.find(Fileupload, {

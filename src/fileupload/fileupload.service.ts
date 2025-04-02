@@ -29,6 +29,7 @@ export class FileuploadService {
     const baseUrl = this.configService.get<string>('imageurl');
     const Url = `${baseUrl}${filePath.split('uploads\\')[1]}`;
 
+
     const fileupload = this.fileuploadRepository.create({ imageurl: Url });
     return this.fileuploadRepository.save(fileupload);
 

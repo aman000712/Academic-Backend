@@ -1,26 +1,46 @@
-import { Injectable } from '@nestjs/common';
+import { BadRequestException, Injectable, NotFoundException } from '@nestjs/common';
 import { CreateDepartmentcontactDto } from './dto/create-departmentcontact.dto';
 import { UpdateDepartmentcontactDto } from './dto/update-departmentcontact.dto';
+import { InjectRepository } from '@nestjs/typeorm';
+import { Departmentcontact } from './entities/departmentcontact.entity';
+import { Repository } from 'typeorm';
 
 @Injectable()
 export class DepartmentcontactService {
-  create(createDepartmentcontactDto: CreateDepartmentcontactDto) {
-    return 'This action adds a new departmentcontact';
+
+  constructor(
+    @InjectRepository(Departmentcontact) private readonly departmentcontactRepository: Repository<Departmentcontact>,
+  ) { }
+
+
+  async create(createDepartmentcontactDto: CreateDepartmentcontactDto) {
+
+    const datas = await this.departmentcontactRepository.findOne({ where: {} });
+    if (datas) {
+      throw new BadRequestException('departmentcontact already exists you can only patch');
+    }
+    const departmentcontact = await this.departmentcontactRepository.create(createDepartmentcontactDto);
+
+
+    return this.departmentcontactRepository.save(departmentcontact);
   }
 
-  findAll() {
-    return `This action returns all departmentcontact`;
+  async findAll() {
+    return this.departmentcontactRepository.find();
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} departmentcontact`;
+
+  async update(id: number, updateDepartmentcontactDto: UpdateDepartmentcontactDto) {
+
+    const departmentcontact = await this.departmentcontactRepository.findOne({ where: { id: id } });
+    if (!departmentcontact) {
+      throw new NotFoundException('departmentcontact not found');
+    }
+
+    Object.assign(departmentcontact, updateDepartmentcontactDto);
+
+
+    return this.departmentcontactRepository.save(departmentcontact);
   }
 
-  update(id: number, updateDepartmentcontactDto: UpdateDepartmentcontactDto) {
-    return `This action updates a #${id} departmentcontact`;
-  }
-
-  remove(id: number) {
-    return `This action removes a #${id} departmentcontact`;
-  }
 }

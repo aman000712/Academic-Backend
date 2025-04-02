@@ -1,4 +1,4 @@
-import { BadRequestException, Injectable } from '@nestjs/common';
+import { BadRequestException, Injectable, NotFoundException } from '@nestjs/common';
 import { CreateEligibilitycontactforadviceDto } from './dto/create-eligibilitycontactforadvice.dto';
 import { UpdateEligibilitycontactforadviceDto } from './dto/update-eligibilitycontactforadvice.dto';
 import { InjectRepository } from '@nestjs/typeorm';
@@ -35,7 +35,7 @@ export class EligibilitycontactforadviceService {
 
     const eligibilitycontactforadvice = await this.eligibilitycontactforadviceRepository.findOne({ where: { id: id } });
     if (!eligibilitycontactforadvice) {
-      throw new BadRequestException('eligibilitycontactforadvice not found');
+      throw new NotFoundException('eligibilitycontactforadvice not found');
     }
 
     Object.assign(eligibilitycontactforadvice, updateEligibilitycontactforadviceDto);

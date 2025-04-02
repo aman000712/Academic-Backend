@@ -17,18 +17,10 @@ export class WhythiscourseController {
     return this.whythiscourseService.findAll();
   }
 
-  @Get(':id')
-  findOne(@Param('id') id: string) {
-    return this.whythiscourseService.findOne(+id);
-  }
 
   @Patch(':id')
   update(@Param('id') id: string, @Body() updateWhythiscourseDto: UpdateWhythiscourseDto) {
     return this.whythiscourseService.update(+id, updateWhythiscourseDto);
   }
 
-  @Delete(':id')
-  remove(@Param('id') id: string) {
-    return this.whythiscourseService.remove(+id);
-  }
 }

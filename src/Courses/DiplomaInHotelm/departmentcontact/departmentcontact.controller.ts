@@ -17,18 +17,9 @@ export class DepartmentcontactController {
     return this.departmentcontactService.findAll();
   }
 
-  @Get(':id')
-  findOne(@Param('id') id: string) {
-    return this.departmentcontactService.findOne(+id);
-  }
-
   @Patch(':id')
   update(@Param('id') id: string, @Body() updateDepartmentcontactDto: UpdateDepartmentcontactDto) {
     return this.departmentcontactService.update(+id, updateDepartmentcontactDto);
   }
 
-  @Delete(':id')
-  remove(@Param('id') id: string) {
-    return this.departmentcontactService.remove(+id);
-  }
 }

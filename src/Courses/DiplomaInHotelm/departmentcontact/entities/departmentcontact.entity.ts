@@ -21,7 +21,7 @@ export class Departmentcontact {
     position: string
 
     @Column()
-    contactnumber: number
+    contactnumber: string
 
     @Column()
     email: string

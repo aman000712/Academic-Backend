@@ -24,6 +24,4 @@ export class Blogsandupdate {
     blogdate: string
 
 
-
-
 }

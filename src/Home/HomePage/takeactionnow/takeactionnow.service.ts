@@ -62,6 +62,17 @@ export class TakeactionnowService {
       throw new NotFoundException('Takeactionnow not found');
     }
 
+
+    if (updateTakeactionnowDto.imageid) {
+      const imageid = await this.takeactionnowRepository.manager.findOne(
+        Fileupload, { where: { id: updateTakeactionnowDto.imageid } }
+      );
+      if (!imageid) {
+        throw new NotFoundException('Imageid not found');
+      }
+    }
+
+
     Object.assign(takeactionnow, updateTakeactionnowDto);
 
 

@@ -61,6 +61,16 @@ export class OurpartnerslogosService {
       throw new Error('ourpartnerslogo not found');
     }
 
+
+    if (updateOurpartnerslogoDto.logoimageid) {
+      const imageid = await this.ourpartnerslogoRepository.manager.findOne(
+        Fileupload, { where: { id: updateOurpartnerslogoDto.logoimageid } }
+      );
+      if (!imageid) {
+        throw new Error('Imageid not found');
+      }
+    }
+
     Object.assign(ourpartnerslogo, updateOurpartnerslogoDto);
 
 

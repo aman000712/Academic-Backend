@@ -57,6 +57,19 @@ export class EligibilityherosectionService {
     }
 
 
+    if (updateEligibilityherosectionDto.topimageid) {
+      const topimage = await this.eligibilityherosectionRepository.manager.findOne(
+        Fileupload, {
+        where: {
+          id: updateEligibilityherosectionDto.topimageid
+        }
+      });
+      if (!topimage) {
+        throw new BadRequestException('topimage not found');
+      }
+    }
+
+
     Object.assign(eligibilityherosection, updateEligibilityherosectionDto);
 
 

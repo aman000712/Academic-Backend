@@ -1,4 +1,4 @@
-import { BadRequestException, Injectable } from '@nestjs/common';
+import { BadRequestException, Injectable, NotFoundException } from '@nestjs/common';
 import { CreateWhychooseusDto } from './dto/create-whychooseus.dto';
 import { UpdateWhychooseusDto } from './dto/update-whychooseus.dto';
 import { InjectRepository } from '@nestjs/typeorm';
@@ -69,7 +69,18 @@ export class WhychooseusService {
     });
 
     if (!whychooseus) {
-      throw new Error('whychooseus not found');
+      throw new NotFoundException('whychooseus not found');
+    }
+
+    if (updateWhychooseusDto.imageid) {
+      const image = await this.whychooseusRepository.manager.findOne(
+        Fileupload, {
+        where: { id: updateWhychooseusDto.imageid }
+      });
+      if (!image) {
+        throw new NotFoundException('Imageid not found');
+      }
+      whychooseus.imageid = image;  
     }
 
     Object.assign(whychooseus, updateWhychooseusDto);
