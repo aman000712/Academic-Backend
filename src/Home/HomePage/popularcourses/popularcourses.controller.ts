@@ -9,6 +9,7 @@ export class PopularcoursesController {
 
   @Post()
   create(@Body() createPopularcourseDto: CreatePopularcourseDto) {
+    console.log("Received DTO:", createPopularcourseDto);
     return this.popularcoursesService.create(createPopularcourseDto);
   }
 

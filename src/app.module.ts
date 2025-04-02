@@ -76,6 +76,9 @@ import { EligibilitycontactinfoModule } from './Pages/Eligibility/eligibilitycon
 import { TopstudenttestimonialsModule } from './Home/Testinomials/topstudenttestimonials/topstudenttestimonials.module';
 import { EligibilitycontactforadviceModule } from './Pages/Eligibility/eligibilitycontactforadvice/eligibilitycontactforadvice.module';
 import { EligibilityrelevantquestionsModule } from './Pages/Eligibility/eligibilityrelevantquestions/eligibilityrelevantquestions.module';
+import { join } from 'path';
+import { ImageuploadModule } from './imageupload/imageupload.module';
+import { ServeStaticModule } from '@nestjs/serve-static';
 import { Whythiscourse } from './Courses/DiplomaInHotelm/whythiscourse/entities/whythiscourse.entity';
 import { Departmentcontact } from './Courses/DiplomaInHotelm/departmentcontact/entities/departmentcontact.entity';
 import { AboutgroupsgettoknowModule } from './Aboutus/AboutAbhyamGroups/aboutgroupsgettoknow/aboutgroupsgettoknow.module';
@@ -117,10 +120,13 @@ import { Frequentlyaskedtitle } from './Home/HomePage/frequentlyaskedtitle/entit
       envFilePath: '.env'
     }),
 
-
+    // ServeStaticModule.forRoot({
+    //   rootPath: join(__dirname, '..', 'uploads'), // Serve static files from the 'uploads' folder
+    //   serveRoot: '/uploads', // Access images via '/uploads'
+    // }),
     NestjsFormDataModule.config({
       storage: FileSystemStoredFile,
-      fileSystemStoragePath: 'uploads',
+      fileSystemStoragePath:'uploads',
       isGlobal: true,
       autoDeleteFile: false,
       limits: {
@@ -129,23 +135,32 @@ import { Frequentlyaskedtitle } from './Home/HomePage/frequentlyaskedtitle/entit
       },
       cleanupAfterSuccessHandle: false,
     }),
-
-
-
-
-
-
-
     TypeOrmModule.forRoot({
       type: 'mysql',
-      host: 'localhost',
+      host: 'titan.de.hostns.io',
       port: 3306,
-      username: 'root',
-      password: 'Amanxtteri0007@',
-      database: 'academic',
-      entities: [Fileupload,Herosection, Aboutsection, Milestonesection,Popularcourse,Whychooseus,Ourpartner,Testinomial,Eventsandupdate,Takeactionnow,Topprogram,Blogandupdatestop,Eventsandupdatestop,Popularcoursestop,Testinomialstop,Whychooseustop,Weareproudtop,Blogsandupdate,TopHerosection,Herotestinomialssection,Companylogo,Contactus,Contactinfo,Inquirysection,Eligibilityherosection,Ourpartnerslogo,Eligibilityherotext,Herotestinomialstop,Studenttestinomial,Topstudenttestimonial,Eligibilityherosection,Eligibilitycontactinfo,Eligibilityrelevantquestion,Eligibilitycontactforadvice,Whythiscourse,Departmentcontact,Theplp,Noticestitle,Notice,Aboutusceo,Aboutusceosay,Aboutuscollaboration,Aboutusgroup,Ourvision,Aboutgroupsgettoknow,Gettoknowimage,Aboutusgrouptype,Aboutusmilestone,Aboutusteam,Aboutusmorby,Frequentlyaskedtitle],
-      synchronize: true,
+      username: 'earibtco_kisaaayam',
+      password: 'aayamglobal#123',
+      database: 'earibtco_aayamglobal',
+      autoLoadEntities:true,
+      synchronize: false,
+//       username: 'root',
+//       password: 'Amanxtteri0007@',
+//       database: 'academic',
+//       entities: [Fileupload,Herosection, Aboutsection, Milestonesection,Popularcourse,Whychooseus,Ourpartner,Testinomial,Eventsandupdate,Takeactionnow,Topprogram,Blogandupdatestop,Eventsandupdatestop,Popularcoursestop,Testinomialstop,Whychooseustop,Weareproudtop,Blogsandupdate,TopHerosection,Herotestinomialssection,Companylogo,Contactus,Contactinfo,Inquirysection,Eligibilityherosection,Ourpartnerslogo,Eligibilityherotext,Herotestinomialstop,Studenttestinomial,Topstudenttestimonial,Eligibilityherosection,Eligibilitycontactinfo,Eligibilityrelevantquestion,Eligibilitycontactforadvice,Whythiscourse,Departmentcontact,Theplp,Noticestitle,Notice,Aboutusceo,Aboutusceosay,Aboutuscollaboration,Aboutusgroup,Ourvision,Aboutgroupsgettoknow,Gettoknowimage,Aboutusgrouptype,Aboutusmilestone,Aboutusteam,Aboutusmorby,Frequentlyaskedtitle],
+//       synchronize: true,
     }),
+    // TypeOrmModule.forRoot({
+    //   type: 'mysql',
+    //   host: 's1323.sgp1.mysecurecloudhost.com',
+    //   port: 3306,
+    //   username: 'aayamglo_kisanmahat',
+    //   password: '13880ksM#',
+    //   database: 'aayamglo_mainDatabase',
+    //   autoLoadEntities:true,
+    //   synchronize: true,
+    // }),
+    // entities: [Fileupload,Herosection, Aboutsection, Milestonesection,Popularcourse,Whychooseus,Ourpartner,Testinomial,Eventsandupdate,Takeactionnow,Topprogram,Blogandupdatestop,Eventsandupdatestop,Popularcoursestop,Testinomialstop,Whychooseustop,Weareproudtop,Blogsandupdate,TopHerosection,Herotestinomialssection,Companylogo,Contactus,Contactinfo,Inquirysection,Eligibilityherosection,Ourpartnerslogo,Eligibilityherotext,Herotestinomialstop,Studenttestinomial,Topstudenttestimonial,Eligibilityherosection,Eligibilitycontactinfo,Eligibilityrelevantquestion,Eligibilitycontactforadvice],
     HerosectionModule,
     AboutsectionModule,
     MilestonesectionModule,
@@ -185,6 +200,7 @@ import { Frequentlyaskedtitle } from './Home/HomePage/frequentlyaskedtitle/entit
     EligibilitycontactinfoModule,
     EligibilitycontactforadviceModule,
     EligibilityrelevantquestionsModule,
+    ImageuploadModule,
     TheplpModule,
     NoticestitleModule,
     NoticesModule,
