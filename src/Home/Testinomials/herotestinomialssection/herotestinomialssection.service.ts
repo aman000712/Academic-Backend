@@ -10,7 +10,7 @@ import { Fileupload } from 'src/fileupload/entities/fileupload.entity';
 export class HerotestinomialssectionService {
 
   constructor(
-    @InjectRepository(Herotestinomialssection) private readonly  herotestinomialssectionRepository: Repository<Herotestinomialssection>,
+    @InjectRepository(Herotestinomialssection) private readonly herotestinomialssectionRepository: Repository<Herotestinomialssection>,
   ) { }
 
 
@@ -66,11 +66,27 @@ export class HerotestinomialssectionService {
       throw new NotFoundException('herotestinomialssection not found');
     }
 
+
+    if (updateHerotestinomialssectionDto.herotestinomialssectionimageid) {
+      const herotestinomialssectionimageid = await this.herotestinomialssectionRepository.manager.findOne(
+        Fileupload,
+        {
+          where: {
+            id: updateHerotestinomialssectionDto.herotestinomialssectionimageid
+          }
+        }
+      );
+      if (!herotestinomialssectionimageid) {
+        throw new NotFoundException('herotestinomialssectionimageid not found');
+      }
+    }
+
+
     Object.assign(herotestinomialssection, updateHerotestinomialssectionDto);
 
 
 
-    return  this.herotestinomialssectionRepository.save(herotestinomialssection);
+    return this.herotestinomialssectionRepository.save(herotestinomialssection);
   }
 
 }

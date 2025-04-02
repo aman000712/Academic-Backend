@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, NotFoundException } from '@nestjs/common';
 import { CreateBlogsandupdateDto } from './dto/create-blogsandupdate.dto';
 import { UpdateBlogsandupdateDto } from './dto/update-blogsandupdate.dto';
 import { InjectRepository } from '@nestjs/typeorm';
@@ -63,7 +63,7 @@ export class BlogsandupdatesService {
     });
 
     if (!blogsandupdate) {
-      throw new Error('blogsandupdate not found');
+      throw new NotFoundException('blogsandupdate not found');
     }
 
     Object.assign(blogsandupdate, updateBlogsandupdateDto);

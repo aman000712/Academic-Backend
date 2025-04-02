@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, NotFoundException } from '@nestjs/common';
 import { CreateTestinomialDto } from './dto/create-testinomial.dto';
 import { UpdateTestinomialDto } from './dto/update-testinomial.dto';
 import { InjectRepository } from '@nestjs/typeorm';
@@ -57,8 +57,23 @@ export class TestinomialsService {
       }
     });
     if (!testinomial) {
-      throw new Error('testinomial not found');
+      throw new NotFoundException('testinomial not found');
     }
+
+
+    if (updateTestinomialDto.testomonialimageid) {
+      const testinomialimageid = await this.testinomialRepository.manager.findOne(
+        Fileupload, {
+        where: {
+          id: updateTestinomialDto.testomonialimageid
+        }
+      }
+      );
+      if (!testinomialimageid) {
+        throw new NotFoundException('testinomialimageid not found');
+      }
+    }
+
 
     Object.assign(testinomial, updateTestinomialDto);
 

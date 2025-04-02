@@ -10,7 +10,7 @@ export class Whychooseus {
     @Column()
     title: string
 
-    @Column()
+    @Column('text')
     description: string
 
     @Column('json')

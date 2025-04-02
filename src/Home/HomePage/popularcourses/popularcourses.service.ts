@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, NotFoundException } from '@nestjs/common';
 import { CreatePopularcourseDto } from './dto/create-popularcourse.dto';
 import { UpdatePopularcourseDto } from './dto/update-popularcourse.dto';
 import { InjectRepository } from '@nestjs/typeorm';
@@ -28,7 +28,7 @@ export class PopularcoursesService {
       }
       );
       if (!imageid) {
-        throw new Error('Image not found');
+        throw new NotFoundException('Image not found');
       }
     }
 
@@ -37,7 +37,7 @@ export class PopularcoursesService {
   }
 
   async findAll() {
-    return await this.popularcourseRepository.find({
+    return this.popularcourseRepository.find({
       relations: ['imageid'],
     });
   }
@@ -58,11 +58,26 @@ export class PopularcoursesService {
         id: id,
       },
     });
-    
 
-    if(!popularcourse){
-      throw new Error('Popularcourse not found');
+
+    if (!popularcourse) {
+      throw new NotFoundException('Popularcourse not found');
     }
+
+
+    if (updatePopularcourseDto.imageid) {
+      const imageid = await this.popularcourseRepository.manager.findOne(
+        Fileupload, {
+        where: {
+          id: updatePopularcourseDto.imageid
+        }
+      }
+      );
+      if (!imageid) {
+        throw new NotFoundException('Image not found');
+      }
+    }
+
 
     Object.assign(popularcourse, updatePopularcourseDto);
 

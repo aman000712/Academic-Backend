@@ -76,6 +76,39 @@ import { EligibilitycontactinfoModule } from './Pages/Eligibility/eligibilitycon
 import { TopstudenttestimonialsModule } from './Home/Testinomials/topstudenttestimonials/topstudenttestimonials.module';
 import { EligibilitycontactforadviceModule } from './Pages/Eligibility/eligibilitycontactforadvice/eligibilitycontactforadvice.module';
 import { EligibilityrelevantquestionsModule } from './Pages/Eligibility/eligibilityrelevantquestions/eligibilityrelevantquestions.module';
+import { Whythiscourse } from './Courses/DiplomaInHotelm/whythiscourse/entities/whythiscourse.entity';
+import { Departmentcontact } from './Courses/DiplomaInHotelm/departmentcontact/entities/departmentcontact.entity';
+import { AboutgroupsgettoknowModule } from './Aboutus/AboutAbhyamGroups/aboutgroupsgettoknow/aboutgroupsgettoknow.module';
+import { Aboutgroupsgettoknow } from './Aboutus/AboutAbhyamGroups/aboutgroupsgettoknow/entities/aboutgroupsgettoknow.entity';
+import { Theplp } from './Courses/DiplomaInHotelm/theplp/entities/theplp.entity';
+import { Noticestitle } from './Pages/Notices/noticestitle/entities/noticestitle.entity';
+import { Notice } from './Pages/Notices/notices/entities/notice.entity';
+import { Aboutusceo } from './Aboutus/AboutAbhyamGroups/aboutusceo/entities/aboutusceo.entity';
+import { Aboutusceosay } from './Aboutus/AboutAbhyamGroups/aboutusceosays/entities/aboutusceosay.entity';
+import { Aboutuscollaboration } from './Aboutus/AboutAbhyamGroups/aboutuscollaboration/entities/aboutuscollaboration.entity';
+import { Aboutusgroup } from './Aboutus/AboutAbhyamGroups/aboutusgroup/entities/aboutusgroup.entity';
+import { Ourvision } from './Aboutus/AboutAbhyamGroups/ourvision/entities/ourvision.entity';
+import { Gettoknowimage } from './Aboutus/AboutAbhyamGroups/gettoknowimages/entities/gettoknowimage.entity';
+import { TheplpModule } from './Courses/DiplomaInHotelm/theplp/theplp.module';
+import { NoticestitleModule } from './Pages/Notices/noticestitle/noticestitle.module';
+import { NoticesModule } from './Pages/Notices/notices/notices.module';
+import { GettoknowimagesModule } from './Aboutus/AboutAbhyamGroups/gettoknowimages/gettoknowimages.module';
+import { OurvisionModule } from './Aboutus/AboutAbhyamGroups/ourvision/ourvision.module';
+import { AboutusgroupModule } from './Aboutus/AboutAbhyamGroups/aboutusgroup/aboutusgroup.module';
+import { AboutusgrouptypesModule } from './Aboutus/AboutAbhyamGroups/aboutusgrouptypes/aboutusgrouptypes.module';
+import { AboutusmilestoneModule } from './Aboutus/AboutAbhyamGroups/aboutusmilestone/aboutusmilestone.module';
+import { AboutusteamsModule } from './Aboutus/AboutAbhyamGroups/aboutusteams/aboutusteams.module';
+import { AboutusmorbyModule } from './Aboutus/AboutAbhyamGroups/aboutusmorby/aboutusmorby.module';
+import { AboutuscollaborationModule } from './Aboutus/AboutAbhyamGroups/aboutuscollaboration/aboutuscollaboration.module';
+import { AboutusceoModule } from './Aboutus/AboutAbhyamGroups/aboutusceo/aboutusceo.module';
+import { AboutusceosaysModule } from './Aboutus/AboutAbhyamGroups/aboutusceosays/aboutusceosays.module';
+import { Aboutusgrouptype } from './Aboutus/AboutAbhyamGroups/aboutusgrouptypes/entities/aboutusgrouptype.entity';
+import { Aboutusmilestone } from './Aboutus/AboutAbhyamGroups/aboutusmilestone/entities/aboutusmilestone.entity';
+import { Aboutusteam } from './Aboutus/AboutAbhyamGroups/aboutusteams/entities/aboutusteam.entity';
+import { Aboutusmorby } from './Aboutus/AboutAbhyamGroups/aboutusmorby/entities/aboutusmorby.entity';
+import { FrequentlyaskedtitleModule } from './Home/HomePage/frequentlyaskedtitle/frequentlyaskedtitle.module';
+import { FrequentlyaskedtopicsModule } from './Home/HomePage/frequentlyaskedtopics/frequentlyaskedtopics.module';
+import { Frequentlyaskedtitle } from './Home/HomePage/frequentlyaskedtitle/entities/frequentlyaskedtitle.entity';
 
 @Module({
   imports: [
@@ -110,7 +143,7 @@ import { EligibilityrelevantquestionsModule } from './Pages/Eligibility/eligibil
       username: 'root',
       password: 'Amanxtteri0007@',
       database: 'academic',
-      entities: [Fileupload,Herosection, Aboutsection, Milestonesection,Popularcourse,Whychooseus,Ourpartner,Testinomial,Eventsandupdate,Takeactionnow,Topprogram,Blogandupdatestop,Eventsandupdatestop,Popularcoursestop,Testinomialstop,Whychooseustop,Weareproudtop,Blogsandupdate,TopHerosection,Herotestinomialssection,Companylogo,Contactus,Contactinfo,Inquirysection,Eligibilityherosection,Ourpartnerslogo,Eligibilityherotext,Herotestinomialstop,Studenttestinomial,Topstudenttestimonial,Eligibilityherosection,Eligibilitycontactinfo,Eligibilityrelevantquestion,Eligibilitycontactforadvice],
+      entities: [Fileupload,Herosection, Aboutsection, Milestonesection,Popularcourse,Whychooseus,Ourpartner,Testinomial,Eventsandupdate,Takeactionnow,Topprogram,Blogandupdatestop,Eventsandupdatestop,Popularcoursestop,Testinomialstop,Whychooseustop,Weareproudtop,Blogsandupdate,TopHerosection,Herotestinomialssection,Companylogo,Contactus,Contactinfo,Inquirysection,Eligibilityherosection,Ourpartnerslogo,Eligibilityherotext,Herotestinomialstop,Studenttestinomial,Topstudenttestimonial,Eligibilityherosection,Eligibilitycontactinfo,Eligibilityrelevantquestion,Eligibilitycontactforadvice,Whythiscourse,Departmentcontact,Theplp,Noticestitle,Notice,Aboutusceo,Aboutusceosay,Aboutuscollaboration,Aboutusgroup,Ourvision,Aboutgroupsgettoknow,Gettoknowimage,Aboutusgrouptype,Aboutusmilestone,Aboutusteam,Aboutusmorby,Frequentlyaskedtitle],
       synchronize: true,
     }),
     HerosectionModule,
@@ -152,6 +185,22 @@ import { EligibilityrelevantquestionsModule } from './Pages/Eligibility/eligibil
     EligibilitycontactinfoModule,
     EligibilitycontactforadviceModule,
     EligibilityrelevantquestionsModule,
+    TheplpModule,
+    NoticestitleModule,
+    NoticesModule,
+    AboutgroupsgettoknowModule,
+    GettoknowimagesModule,
+    OurvisionModule,
+    AboutusgroupModule,
+    AboutusgrouptypesModule,
+    AboutusmilestoneModule,
+    AboutusteamsModule,
+    AboutusmorbyModule,
+    AboutuscollaborationModule,
+    AboutusceoModule,
+    AboutusceosaysModule,
+    FrequentlyaskedtitleModule,
+    FrequentlyaskedtopicsModule,
   ],
   controllers: [AppController],
   providers: [AppService],

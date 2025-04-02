@@ -43,7 +43,7 @@ export class EligibilityherotextService {
     });
 
     if (!eligibilityherotext) {
-      throw new Error('Eligibilityherotext not found');
+      throw new NotFoundException('Eligibilityherotext not found');
     }
 
     Object.assign(eligibilityherotext, updateEligibilityherotextDto);

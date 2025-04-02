@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, NotFoundException } from '@nestjs/common';
 import { CreateEligibilityrelevantquestionDto } from './dto/create-eligibilityrelevantquestion.dto';
 import { UpdateEligibilityrelevantquestionDto } from './dto/update-eligibilityrelevantquestion.dto';
 import { InjectRepository } from '@nestjs/typeorm';
@@ -39,7 +39,7 @@ export class EligibilityrelevantquestionsService {
 
     const eligibilityrelevantquestion = await this.eligibilityrelevantquestionRepository.findOne({ where: { id: id } });
     if (!eligibilityrelevantquestion) {
-      throw new Error('eligibilityrelevantquestion not found');
+      throw new NotFoundException('eligibilityrelevantquestion not found');
     }
 
     Object.assign(eligibilityrelevantquestion, updateEligibilityrelevantquestionDto);

@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, NotFoundException } from '@nestjs/common';
 import { CreateEventsandupdateDto } from './dto/create-eventsandupdate.dto';
 import { UpdateEventsandupdateDto } from './dto/update-eventsandupdate.dto';
 import { InjectRepository } from '@nestjs/typeorm';
@@ -57,7 +57,7 @@ export class EventsandupdatesService {
 
 
     if (!eventsandupdate) {
-      throw new Error('eventsandupdate not found');
+      throw new NotFoundException('eventsandupdate not found');
     }
 
     Object.assign(eventsandupdate, updateEventsandupdateDto);

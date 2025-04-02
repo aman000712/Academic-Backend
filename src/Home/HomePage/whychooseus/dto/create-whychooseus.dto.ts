@@ -1,6 +1,6 @@
 import { ApiProperty } from "@nestjs/swagger";
 import { Type } from "class-transformer";
-import { IsArray, isString, Validate } from "class-validator";
+import { IsArray, IsString, isString, Validate } from "class-validator";
 
 export class CreateWhychooseusDto {
 
@@ -12,6 +12,7 @@ export class CreateWhychooseusDto {
 
     @ApiProperty()
     @IsArray()
+    @IsString({each: true})
     options: string[];
 
     @ApiProperty()

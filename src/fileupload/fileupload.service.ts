@@ -24,7 +24,7 @@ export class FileuploadService {
     const filePath = createFileuploadDto.images.path;
     const fileName = filePath.split('\\').pop() || filePath.split('/').pop();
 
-    const baseUrl = this.configService.get<string>('imageurl');
+    const baseUrl = this.configService.get<string>('Imageurl');
     const Url = `${baseUrl}${fileName}`;
 
     const fileupload = this.fileuploadRepository.create({ imageurl: Url });
