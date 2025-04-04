@@ -11,6 +11,9 @@ export class Eventsandupdate {
     @JoinColumn()
     eventimageid: Fileupload
 
+    @Column({default:"this is event"})
+    title:string
+
     @Column()
     eventstatus:string
 
@@ -20,7 +23,7 @@ export class Eventsandupdate {
     @Column()
     eventlocation:string
 
-    @Column()
+    @Column({type:"longtext"})
     eventdescription:string
 
 

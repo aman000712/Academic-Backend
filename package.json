@@ -37,6 +37,7 @@
     "nestjs-form-data": "^1.9.93",
     "reflect-metadata": "^0.2.2",
     "rxjs": "^7.8.1",
+    "serve-static": "^2.2.0",
     "typeorm": "^0.3.20"
   },
   "devDependencies": {

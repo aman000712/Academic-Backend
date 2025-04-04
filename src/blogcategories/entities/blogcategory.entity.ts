@@ -1,20 +1,19 @@
 import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
 
+
 @Entity()
-export class Blogandupdatestop {
+export class Blogcategory {
+
 
     @PrimaryGeneratedColumn()
     id: number
 
-    @Column()
-    subtitle: string
-
 
     @Column()
-    title: string
+    status: string
 
-    @Column({type:"longtext"})
-    description: string
+
+
 
 
 }

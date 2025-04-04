@@ -1,5 +1,6 @@
+import { Blogcategory } from "src/blogcategories/entities/blogcategory.entity";
 import { Fileupload } from "src/fileupload/entities/fileupload.entity";
-import { Column, Entity, JoinColumn, OneToOne, PrimaryGeneratedColumn } from "typeorm";
+import { Column, Entity, JoinColumn, ManyToOne, OneToOne, PrimaryGeneratedColumn } from "typeorm";
 
 @Entity()
 export class Blogsandupdate {
@@ -11,8 +12,10 @@ export class Blogsandupdate {
     @JoinColumn()
     blogimageid: Fileupload
 
-    @Column()
-    status: string
+
+    @ManyToOne(()=>Blogcategory,{eager:true})
+    @JoinColumn()
+    categoryStatus:Blogcategory
 
     @Column()
     blogtitle: string
@@ -22,6 +25,10 @@ export class Blogsandupdate {
 
     @Column()
     blogdate: string
+
+
+    @Column({type:"longtext"})
+    description: string
 
 
 }

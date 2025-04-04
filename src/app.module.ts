@@ -112,6 +112,8 @@ import { Aboutusmorby } from './Aboutus/AboutAbhyamGroups/aboutusmorby/entities/
 import { FrequentlyaskedtitleModule } from './Home/HomePage/frequentlyaskedtitle/frequentlyaskedtitle.module';
 import { FrequentlyaskedtopicsModule } from './Home/HomePage/frequentlyaskedtopics/frequentlyaskedtopics.module';
 import { Frequentlyaskedtitle } from './Home/HomePage/frequentlyaskedtitle/entities/frequentlyaskedtitle.entity';
+import { BlogcategoriesModule } from './blogcategories/blogcategories.module';
+import { Blogcategory } from './blogcategories/entities/blogcategory.entity';
 
 @Module({
   imports: [
@@ -126,7 +128,7 @@ import { Frequentlyaskedtitle } from './Home/HomePage/frequentlyaskedtitle/entit
     // }),
     NestjsFormDataModule.config({
       storage: FileSystemStoredFile,
-      fileSystemStoragePath:'uploads',
+      fileSystemStoragePath: 'uploads',
       isGlobal: true,
       autoDeleteFile: false,
       limits: {
@@ -137,18 +139,20 @@ import { Frequentlyaskedtitle } from './Home/HomePage/frequentlyaskedtitle/entit
     }),
     TypeOrmModule.forRoot({
       type: 'mysql',
-      host: 'titan.de.hostns.io',
+      // host: 'titan.de.hostns.io',
       port: 3306,
-      username: 'earibtco_kisaaayam',
-      password: 'aayamglobal#123',
-      database: 'earibtco_aayamglobal',
-      autoLoadEntities:true,
-      synchronize: false,
-//       username: 'root',
-//       password: 'Amanxtteri0007@',
-//       database: 'academic',
-//       entities: [Fileupload,Herosection, Aboutsection, Milestonesection,Popularcourse,Whychooseus,Ourpartner,Testinomial,Eventsandupdate,Takeactionnow,Topprogram,Blogandupdatestop,Eventsandupdatestop,Popularcoursestop,Testinomialstop,Whychooseustop,Weareproudtop,Blogsandupdate,TopHerosection,Herotestinomialssection,Companylogo,Contactus,Contactinfo,Inquirysection,Eligibilityherosection,Ourpartnerslogo,Eligibilityherotext,Herotestinomialstop,Studenttestinomial,Topstudenttestimonial,Eligibilityherosection,Eligibilitycontactinfo,Eligibilityrelevantquestion,Eligibilitycontactforadvice,Whythiscourse,Departmentcontact,Theplp,Noticestitle,Notice,Aboutusceo,Aboutusceosay,Aboutuscollaboration,Aboutusgroup,Ourvision,Aboutgroupsgettoknow,Gettoknowimage,Aboutusgrouptype,Aboutusmilestone,Aboutusteam,Aboutusmorby,Frequentlyaskedtitle],
-//       synchronize: true,
+      // username: 'earibtco_kisaaayam',
+      // password: 'aayamglobal#123',
+      // database: 'earibtco_aayamglobal',
+      // autoLoadEntities: true,
+      // synchronize: false,
+      host: "localhost",
+      username: 'root',
+      password: 'Amanxtteri0007@',
+      database: 'academic',
+      autoLoadEntities: true,
+      // entities: [Fileupload,Herosection, Aboutsection, Milestonesection,Popularcourse,Whychooseus,Ourpartner,Testinomial,Eventsandupdate,Takeactionnow,Topprogram,Blogandupdatestop,Eventsandupdatestop,Popularcoursestop,Testinomialstop,Whychooseustop,Weareproudtop,Blogsandupdate,TopHerosection,Herotestinomialssection,Companylogo,Contactus,Contactinfo,Inquirysection,Eligibilityherosection,Ourpartnerslogo,Eligibilityherotext,Herotestinomialstop,Studenttestinomial,Topstudenttestimonial,Eligibilityherosection,Eligibilitycontactinfo,Eligibilityrelevantquestion,Eligibilitycontactforadvice,Whythiscourse,Departmentcontact,Theplp,Noticestitle,Notice,Aboutusceo,Aboutusceosay,Aboutuscollaboration,Aboutusgroup,Ourvision,Aboutgroupsgettoknow,Gettoknowimage,Aboutusgrouptype,Aboutusmilestone,Aboutusteam,Aboutusmorby,Frequentlyaskedtitle],
+      synchronize: true,
     }),
     // TypeOrmModule.forRoot({
     //   type: 'mysql',
@@ -157,10 +161,10 @@ import { Frequentlyaskedtitle } from './Home/HomePage/frequentlyaskedtitle/entit
     //   username: 'aayamglo_kisanmahat',
     //   password: '13880ksM#',
     //   database: 'aayamglo_mainDatabase',
-    //   autoLoadEntities:true,
+    //   // autoLoadEntities:true,
+    //   entities: [Fileupload,Herosection, Aboutsection, Milestonesection,Popularcourse,Whychooseus,Ourpartner,Testinomial,Eventsandupdate,Takeactionnow,Topprogram,Blogandupdatestop,Eventsandupdatestop,Popularcoursestop,Testinomialstop,Whychooseustop,Weareproudtop,Blogsandupdate,TopHerosection,Herotestinomialssection,Companylogo,Contactus,Contactinfo,Inquirysection,Eligibilityherosection,Ourpartnerslogo,Eligibilityherotext,Herotestinomialstop,Studenttestinomial,Topstudenttestimonial,Eligibilityherosection,Eligibilitycontactinfo,Eligibilityrelevantquestion,Eligibilitycontactforadvice,Blogsandupdate,Blogcategory],
     //   synchronize: true,
     // }),
-    // entities: [Fileupload,Herosection, Aboutsection, Milestonesection,Popularcourse,Whychooseus,Ourpartner,Testinomial,Eventsandupdate,Takeactionnow,Topprogram,Blogandupdatestop,Eventsandupdatestop,Popularcoursestop,Testinomialstop,Whychooseustop,Weareproudtop,Blogsandupdate,TopHerosection,Herotestinomialssection,Companylogo,Contactus,Contactinfo,Inquirysection,Eligibilityherosection,Ourpartnerslogo,Eligibilityherotext,Herotestinomialstop,Studenttestinomial,Topstudenttestimonial,Eligibilityherosection,Eligibilitycontactinfo,Eligibilityrelevantquestion,Eligibilitycontactforadvice],
     HerosectionModule,
     AboutsectionModule,
     MilestonesectionModule,
@@ -217,6 +221,7 @@ import { Frequentlyaskedtitle } from './Home/HomePage/frequentlyaskedtitle/entit
     AboutusceosaysModule,
     FrequentlyaskedtitleModule,
     FrequentlyaskedtopicsModule,
+    BlogcategoriesModule,
   ],
   controllers: [AppController],
   providers: [AppService],
