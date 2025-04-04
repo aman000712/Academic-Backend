@@ -5,7 +5,7 @@ import { UpdateBlogsandupdateDto } from './dto/update-blogsandupdate.dto';
 
 @Controller('blogsandupdates')
 export class BlogsandupdatesController {
-  constructor(private readonly blogsandupdatesService: BlogsandupdatesService) {}
+  constructor(private readonly blogsandupdatesService: BlogsandupdatesService) { }
 
   @Post()
   create(@Body() createBlogsandupdateDto: CreateBlogsandupdateDto) {
@@ -20,6 +20,11 @@ export class BlogsandupdatesController {
   @Get(':id')
   findOne(@Param('id') id: string) {
     return this.blogsandupdatesService.findOne(+id);
+  }
+
+  @Get('status/:status')
+  findByStatus(@Param('status') status: string) {
+    return this.blogsandupdatesService.findByStatus(status);
   }
 
   @Patch(':id')

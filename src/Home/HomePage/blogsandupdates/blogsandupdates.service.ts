@@ -5,6 +5,7 @@ import { InjectRepository } from '@nestjs/typeorm';
 import { Blogsandupdate } from './entities/blogsandupdate.entity';
 import { Repository } from 'typeorm';
 import { Fileupload } from 'src/fileupload/entities/fileupload.entity';
+import { Blogcategory } from 'src/blogcategories/entities/blogcategory.entity';
 
 @Injectable()
 export class BlogsandupdatesService {
@@ -22,6 +23,24 @@ export class BlogsandupdatesService {
 
     const blogsandupdate = this.blogsandupdateRepository.create(createBlogsandupdateDto);
 
+    if (createBlogsandupdateDto.categoryStatusid) {
+      const category = await this.blogsandupdateRepository.manager.findOne(
+        Blogcategory, {
+        where: {
+          id: createBlogsandupdateDto.categoryStatusid
+        }
+      }
+      );
+      if (!category) {
+        throw new Error('category not found')
+      }
+      blogsandupdate.categoryStatus = category
+    }
+
+
+
+
+
     if (blogsandupdate.blogimageid) {
       const blogimageid = await this.blogsandupdateRepository.manager.findOne(
         Fileupload, {
@@ -37,11 +56,11 @@ export class BlogsandupdatesService {
     return this.blogsandupdateRepository.save(blogsandupdate);
 
   }
-  
+
 
   async findAll() {
     return await this.blogsandupdateRepository.find({
-      relations: ['blogimageid'],
+      relations: ['blogimageid', 'categoryStatus'],
     });
   }
 
@@ -51,6 +70,12 @@ export class BlogsandupdatesService {
         id: id
       },
       relations: ['blogimageid'],
+    });
+  }
+
+  async findByStatus(status: string) {
+    return await this.blogsandupdateRepository.find({
+      relations: ['blogimageid', 'category'],
     });
   }
 

@@ -10,6 +10,9 @@ export class CreateEventsandupdateDto {
     eventstatus: string;
 
     @ApiProperty()
+    title: string;
+
+    @ApiProperty()
     eventdate: string;
 
     @ApiProperty()

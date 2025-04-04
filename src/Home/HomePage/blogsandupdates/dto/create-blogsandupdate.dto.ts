@@ -7,16 +7,19 @@ export class CreateBlogsandupdateDto {
     blogimageid: any
 
     @ApiProperty()
-    status: string
+    blogtitle: string
 
     @ApiProperty()
-    blogtitle: string
+    description: string
 
     @ApiProperty()
     blogname: string
 
     @ApiProperty()
     blogdate: string
+
+    @ApiProperty()
+    categoryStatusid: number;
 
 
 
